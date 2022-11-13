@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_marginBottom="-10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/closeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
+            android:foreground="@drawable/ic_baseline_close_24"
+            android:foregroundGravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/filter_options_string"
+            android:textColor="@color/black"
+            android:textSize="11pt"
+            app:layout_constraintEnd_toStartOf="@+id/doneButton"
+            app:layout_constraintStart_toEndOf="@id/closeButton"
+            app:layout_constraintTop_toTopOf="@id/closeButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/orange"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/done_string"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/closeButton" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/brandTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/brand_string"
+            android:textColor="@color/black"
+            android:textSize="11pt"
+            app:layout_constraintEnd_toStartOf="@+id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/closeButton" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/brandSpinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:dropDownVerticalOffset="20dp"
+            android:entries="@array/brand_array"
+            app:layout_constraintEnd_toEndOf="@id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/brandTitle"
+            app:strokeColor="@color/black"
+            app:strokeWidth="50dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/priceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/price_string"
+            android:textColor="@color/black"
+            android:textSize="11pt"
+            app:layout_constraintEnd_toStartOf="@+id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/brandSpinner" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/priceSpinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:dropDownVerticalOffset="20dp"
+            android:entries="@array/prices_array"
+            app:layout_constraintEnd_toEndOf="@id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/priceTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/sizeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/size_string"
+            android:textColor="@color/black"
+            android:textSize="11pt"
+            app:layout_constraintEnd_toStartOf="@+id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/priceSpinner" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sizeSpinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:dropDownVerticalOffset="20dp"
+            android:entries="@array/size_array"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/doneButton"
+            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintTop_toBottomOf="@id/sizeTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
