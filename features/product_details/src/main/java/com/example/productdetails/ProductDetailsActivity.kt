@@ -1,15 +1,18 @@
 package com.example.productdetails
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.core.DeviceItem
-import com.example.core.navigation.BackToMainActivity
+import com.example.core.di.ActivityWithAppComponent
+import com.example.core.navigation.Navigation
 import com.example.productdetails.databinding.ActivityProductDetailsBinding
+import javax.inject.Inject
 
-class ProductDetailsActivity : BackToMainActivity() {
+class ProductDetailsActivity : ActivityWithAppComponent() {
+
+    @Inject lateinit var navigation: Navigation
 
     private lateinit var binding: ActivityProductDetailsBinding
 
@@ -27,9 +30,9 @@ class ProductDetailsActivity : BackToMainActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        DaggerProductActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
         val adapter = PagerAdapter()
         binding.pager.also {
             it.adapter = adapter
@@ -65,7 +68,9 @@ class ProductDetailsActivity : BackToMainActivity() {
         override fun getItemCount(): Int = items.size
 
         override fun createFragment(position: Int): Fragment = ProductFragment()
+    }
 
-
+    override fun onBackPressed() {
+        navigation.toMainActivity(this)
     }
 }

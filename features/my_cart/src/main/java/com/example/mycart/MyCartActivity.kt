@@ -3,16 +3,18 @@ package com.example.mycart
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.core.navigation.AppNavigation
-import com.example.core.navigation.BackToMainActivity
+import com.example.core.di.ActivityWithAppComponent
+import com.example.core.navigation.Navigation
 import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
+import javax.inject.Inject
 
-class MyCartActivity : BackToMainActivity() {
+class MyCartActivity : ActivityWithAppComponent() {
+
+    @Inject lateinit var navigation: Navigation
 
     private lateinit var binding: ActivityMyCartBinding
 
@@ -20,6 +22,7 @@ class MyCartActivity : BackToMainActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
         val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
         adapter.submitList(
@@ -69,4 +72,9 @@ class MyCartActivity : BackToMainActivity() {
             holder.bind(getItem(position))
         }
     }
+
+    override fun onBackPressed() {
+        navigation.toMainActivity(this)
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.core
+package com.example.core.di
 
 import androidx.appcompat.app.AppCompatActivity
 

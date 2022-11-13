@@ -5,13 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.core.AbstractApp
-import com.example.core.AbstractAppComponent
-import com.example.core.ActivityWithAppComponent
+import com.example.core.di.ActivityWithAppComponent
 import com.example.core.navigation.Navigation
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
@@ -29,12 +26,11 @@ class MainActivity : ActivityWithAppComponent() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         DaggerActivityComponent.builder()
             .abstractAppComponent(appComponent)
             .build()
             .inject(this)
-
-        setContentView(binding.root)
         val adapter = ProductsAdapter()
         binding.devicesRecycler.adapter = adapter
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
