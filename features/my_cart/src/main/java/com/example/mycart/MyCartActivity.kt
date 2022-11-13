@@ -1,4 +1,4 @@
-package com.example.devicesmarket
+package com.example.mycart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.devicesmarket.databinding.ActivityMyCartBinding
-import com.example.devicesmarket.databinding.ItemCardBinding
+import com.example.mycart.databinding.ActivityMyCartBinding
+import com.example.mycart.databinding.CartItemCardBinding
 
 class MyCartActivity : AppCompatActivity() {
 
@@ -20,15 +20,17 @@ class MyCartActivity : AppCompatActivity() {
         setContentView(binding.root)
         val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
-        adapter.submitList(arrayListOf(
-            com.example.core.DeviceItem("Samsung S9", "$500", "$600", 1),
-            com.example.core.DeviceItem("Xiaomi Mi5", "$300", "$400", 1),
-            com.example.core.DeviceItem("Iphone XS 256", "$1500", "$1650", 1),
-            com.example.core.DeviceItem("Samsung A9", "$200", "$320", 1),
-        ))
+        adapter.submitList(
+            arrayListOf(
+                com.example.core.DeviceItem("Samsung S9", "$500", "$600", 1),
+                com.example.core.DeviceItem("Xiaomi Mi5", "$300", "$400", 1),
+                com.example.core.DeviceItem("Iphone XS 256", "$1500", "$1650", 1),
+                com.example.core.DeviceItem("Samsung A9", "$200", "$320", 1),
+            )
+        )
     }
 
-    inner class CartItemHolder(private val binding: ItemCardBinding) :
+    inner class CartItemHolder(private val binding: CartItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(deviceItem: com.example.core.DeviceItem) {
@@ -38,19 +40,23 @@ class MyCartActivity : AppCompatActivity() {
     }
 
     inner class CartItemsAdapter :
-        ListAdapter<com.example.core.DeviceItem, CartItemHolder>(object : DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
+        ListAdapter<com.example.core.DeviceItem, CartItemHolder>(object :
+            DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
 
             override fun areItemsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
                 oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
+            override fun areContentsTheSame(
+                oldItem: com.example.core.DeviceItem,
+                newItem: com.example.core.DeviceItem
+            ) =
                 oldItem.brand == newItem.brand
         }) {
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemHolder =
             CartItemHolder(
-                ItemCardBinding.inflate(
+                CartItemCardBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

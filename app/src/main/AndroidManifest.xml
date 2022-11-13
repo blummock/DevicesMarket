@@ -27,7 +27,7 @@
         </activity>
         <activity android:name="com.example.productdetails.ProductDetailsActivity">
         </activity>
-        <activity android:name=".MyCartActivity">
+        <activity android:name="com.example.mycart.MyCartActivity">
         </activity>
     </application>
 

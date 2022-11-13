@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             stateFilter(false)
         }
         binding.bucketButton.setOnClickListener {
-            val myIntent = Intent(this, MyCartActivity::class.java)
+            val myIntent = Intent(this, com.example.mycart.MyCartActivity::class.java)
             startActivity(myIntent)
             finish()
         }
