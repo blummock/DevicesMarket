@@ -1,16 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
+apply from: '../dependencies.gradle'
 
 android {
-    namespace 'com.example.devicesmarket'
-    compileSdk 32
+    namespace "com.example.devicesmarket"
+    compileSdk androidSdkVersion
 
     defaultConfig {
         applicationId "com.example.devicesmarket"
-        minSdk 27
-        targetSdk 32
+        minSdk androidMinSdkVersion
+        targetSdk androidSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -40,16 +42,16 @@ dependencies {
     implementation project(":features:product_details")
     implementation project(":features:my_cart")
     implementation project(":base:core")
-    implementation "androidx.paging:paging-runtime-ktx:3.1.0"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation mlibs.paging
+    implementation mlibs.kotlinCore
+    implementation mlibs.appCompat
+    implementation mlibs.material
+    implementation mlibs.constraintLayout
+    implementation mlibs.liveData
+    implementation mlibs.viewModel
+    implementation mlibs.navigationFragment
+    implementation mlibs.navigation
+    testImplementation mlibs.junit
+    androidTestImplementation mlibs.junitExt
+    androidTestImplementation mlibs.espresso
 }

@@ -1,0 +1,24 @@
+ext {
+    androidSdkVersion = 32
+    androidMinSdkVersion = 27
+
+    navVersion = "2.5.3"
+    daggerVersion = "2.20"
+    liveDataVersion = "2.4.1"
+
+
+    mlibs = [
+            paging            : "androidx.paging:paging-runtime-ktx:3.1.0",
+            kotlinCore        : "androidx.core:core-ktx:1.7.0",
+            appCompat         : "androidx.appcompat:appcompat:1.5.1",
+            material          : "com.google.android.material:material:1.7.0",
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:2.1.4",
+            liveData          : "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion",
+            viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1",
+            navigationFragment: "androidx.navigation:navigation-fragment-ktx:$navVersion",
+            navigation        : "androidx.navigation:navigation-ui-ktx:$navVersion",
+            junit             : "junit:junit:4.13.2",
+            junitExt          : "androidx.test.ext:junit:1.1.3",
+            espresso          : "androidx.test.espresso:espresso-core:3.4.0"
+    ]
+}
