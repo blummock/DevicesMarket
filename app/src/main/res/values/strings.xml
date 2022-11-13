@@ -42,4 +42,5 @@
     <string name="total_string">Total</string>
     <string name="delivery_string">Delivery</string>
     <string name="explorer_string">• Explorer</string>
+    <string name="dollar">$%d</string>
 </resources>

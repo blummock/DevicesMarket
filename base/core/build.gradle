@@ -38,6 +38,7 @@ dependencies {
     implementation mlibs.appCompat
     testImplementation mlibs.junit
     implementation mlibs.dagger
+    implementation mlibs.gson
     androidTestImplementation mlibs.junitExt
     androidTestImplementation mlibs.espresso
 }

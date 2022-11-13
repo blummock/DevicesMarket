@@ -21,14 +21,14 @@
             android:gravity="center|start"
             android:textColor="@color/black"
             android:textSize="11pt"
-            app:layout_constraintBottom_toBottomOf="@+id/likeButton"
-            app:layout_constraintEnd_toStartOf="@id/likeButton"
+            app:layout_constraintBottom_toBottomOf="@+id/like_button"
+            app:layout_constraintEnd_toStartOf="@id/like_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/likeButton"
+            app:layout_constraintTop_toTopOf="@id/like_button"
             tool:text="Galaxy Note 20 Ultra" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/likeButton"
+            android:id="@+id/like_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"

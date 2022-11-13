@@ -42,6 +42,7 @@ dependencies {
     implementation project(":features:product_details")
     implementation project(":features:my_cart")
     implementation project(":base:core")
+    implementation project(":base:network")
     implementation mlibs.paging
     implementation mlibs.kotlinCore
     implementation mlibs.appCompat
@@ -52,6 +53,7 @@ dependencies {
     implementation mlibs.navigationFragment
     implementation mlibs.navigation
     implementation mlibs.dagger
+    implementation mlibs.picasso
     kapt mlibs.daggerKapt
     testImplementation mlibs.junit
     androidTestImplementation mlibs.junitExt

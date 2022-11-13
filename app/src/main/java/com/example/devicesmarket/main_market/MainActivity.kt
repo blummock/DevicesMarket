@@ -1,4 +1,4 @@
-package com.example.devicesmarket
+package com.example.devicesmarket.main_market
 
 import android.os.Bundle
 import android.util.Log
@@ -8,17 +8,27 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.data.BestSellerEntity
 import com.example.core.di.ActivityWithAppComponent
 import com.example.core.navigation.Navigation
+import com.example.core.repo.MarketRepository
+import com.example.devicesmarket.R
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class MainActivity : ActivityWithAppComponent() {
 
+    @Inject lateinit var navigation: Navigation
+
     @Inject
-    lateinit var navigation: Navigation
+    lateinit var retrofit: MarketRepository
 
     private lateinit var binding: ActivityMainBinding
 
@@ -29,9 +39,10 @@ class MainActivity : ActivityWithAppComponent() {
         setContentView(binding.root)
         DaggerActivityComponent.builder()
             .abstractAppComponent(appComponent)
-            .build()
-            .inject(this)
+            .build().inject(this)
         val adapter = ProductsAdapter()
+
+
         binding.devicesRecycler.adapter = adapter
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
             Triple(R.string.phones_string, R.drawable.layer_phones) {
@@ -66,20 +77,12 @@ class MainActivity : ActivityWithAppComponent() {
                 ).show()
             }
         ))
-        adapter.submitList(
-            arrayListOf(
-                com.example.core.DeviceItem("Samsung S9", "$500", "$600", 1),
-                com.example.core.DeviceItem("Xiaomi Mi5", "$300", "$400", 1),
-                com.example.core.DeviceItem("Iphone XS 256", "$1500", "$1650", 1),
-                com.example.core.DeviceItem("Samsung A9", "$200", "$320", 1),
-                com.example.core.DeviceItem("Samsung G457", "$100", "$110", 1),
-                com.example.core.DeviceItem("Oppo", "$1400", "$1410", 1),
-                com.example.core.DeviceItem("Huawei", "$1040", "$1140", 1),
-                com.example.core.DeviceItem("Pixel", "$1000", "$1100", 1),
-                com.example.core.DeviceItem("One Plus", "$1001", "$1101", 1)
-            )
-        )
 
+        CoroutineScope(
+            Job() + Dispatchers.Main
+        ).launch {
+            adapter.submitList(retrofit.getMarketList().bestSeller)
+        }
     }
 
 
@@ -110,31 +113,36 @@ class MainActivity : ActivityWithAppComponent() {
     inner class ProductHolder(private val binding: DeviceCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        lateinit var deviceItem: com.example.core.DeviceItem
-
-        fun bind(deviceItem: com.example.core.DeviceItem) {
-            this.deviceItem = deviceItem
-            binding.devicePrice.text = deviceItem.price
-            binding.deviceTitle.text = deviceItem.brand
-            binding.deviceCost.text = deviceItem.cost
+        fun bind(item: BestSellerEntity) {
+            binding.run {
+                deviceTitle.text = item.title
+                discountPrice.text = getString(R.string.dollar, item.discountPrice)
+                price.text = getString(R.string.dollar, item.priceWithoutDiscount)
+                likeButton.isSelected = item.isFavorites
+                Picasso.get()
+                    .load(item.picture)
+                    .centerCrop()
+                    .resize(400, 400)
+                    .into(deviceImage)
+            }
             binding.root.setOnClickListener {
-                navigation.toProductDetailsActivity(this@MainActivity)
+//                navigation.toProductDetailsActivity(this@MainActivity)
             }
         }
     }
 
     inner class ProductsAdapter :
-        ListAdapter<com.example.core.DeviceItem, ProductHolder>(object :
-            DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
+        ListAdapter<BestSellerEntity, ProductHolder>(object :
+            DiffUtil.ItemCallback<BestSellerEntity>() {
 
-            override fun areItemsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
+            override fun areItemsTheSame(oldItem: BestSellerEntity, newItem: BestSellerEntity) =
                 oldItem == newItem
 
             override fun areContentsTheSame(
-                oldItem: com.example.core.DeviceItem,
-                newItem: com.example.core.DeviceItem
+                oldItem: BestSellerEntity,
+                newItem: BestSellerEntity
             ) =
-                oldItem.brand == newItem.brand
+                oldItem.id == newItem.id
         }) {
 
 

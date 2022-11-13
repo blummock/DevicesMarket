@@ -1,10 +1,9 @@
-package com.example.devicesmarket
+package com.example.devicesmarket.main_market
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.devicesmarket.databinding.CategoryButtonLayoutBinding
 

@@ -3,22 +3,24 @@
         <layer-list>
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="@color/orange" />
+                    <padding android:bottom="8dp" android:left="8dp" android:top="8dp" android:right="8dp"/>
+                    <solid android:color="@color/white" />
                     <corners android:radius="20dp" />
                 </shape>
             </item>
-            <item android:drawable="@drawable/layer_phones" />
+            <item android:drawable="@drawable/ic_like_fill"/>
         </layer-list>
     </item>
     <item>
         <layer-list>
             <item>
                 <shape android:shape="oval">
+                    <padding android:bottom="8dp" android:left="8dp" android:top="8dp" android:right="8dp"/>
                     <solid android:color="@color/white" />
                     <corners android:radius="20dp" />
                 </shape>
             </item>
-            <item android:drawable="@drawable/layer_phones"/>
+            <item android:drawable="@drawable/ic_like_color"/>
         </layer-list>
     </item>
 </selector>

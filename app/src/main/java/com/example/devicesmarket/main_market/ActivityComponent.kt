@@ -1,10 +1,8 @@
-package com.example.devicesmarket
+package com.example.devicesmarket.main_market
 
 import com.example.core.di.AbstractAppComponent
-import com.example.core.ActivityScope
 import dagger.Component
 
-@ActivityScope
 @Component(dependencies = [AbstractAppComponent::class])
 interface ActivityComponent {
     fun inject(activity: MainActivity)
