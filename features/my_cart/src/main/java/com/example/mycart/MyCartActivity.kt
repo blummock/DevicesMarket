@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.navigation.AppNavigation
+import com.example.core.navigation.BackToMainActivity
 import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
 
-class MyCartActivity : AppCompatActivity() {
+class MyCartActivity : BackToMainActivity() {
 
     private lateinit var binding: ActivityMyCartBinding
 

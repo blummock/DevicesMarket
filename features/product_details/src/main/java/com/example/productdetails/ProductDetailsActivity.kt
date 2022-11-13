@@ -6,9 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.core.DeviceItem
+import com.example.core.navigation.BackToMainActivity
 import com.example.productdetails.databinding.ActivityProductDetailsBinding
 
-class ProductDetailsActivity : AppCompatActivity() {
+class ProductDetailsActivity : BackToMainActivity() {
 
     private lateinit var binding: ActivityProductDetailsBinding
 

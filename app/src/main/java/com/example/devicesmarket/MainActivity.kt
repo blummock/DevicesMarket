@@ -114,9 +114,7 @@ class MainActivity : AppCompatActivity() {
             binding.deviceTitle.text = deviceItem.brand
             binding.deviceCost.text = deviceItem.cost
             binding.root.setOnClickListener {
-                val myIntent = Intent(it.context, ProductDetailsActivity::class.java)
-                it.context.startActivity(myIntent)
-                this@MainActivity.finish()
+                (application as MyApp).getNavigation().toProductDetailsActivity(this@MainActivity)
             }
         }
     }
