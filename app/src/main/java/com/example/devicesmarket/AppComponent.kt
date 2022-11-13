@@ -1,4 +1,11 @@
 package com.example.devicesmarket
 
-interface AppComponent {
+import com.example.core.AbstractAppComponent
+import dagger.Component
+import javax.inject.Singleton
+
+@Singleton
+@Component(modules = [NavigationModule::class])
+interface AppComponent : AbstractAppComponent {
+
 }

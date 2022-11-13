@@ -5,8 +5,9 @@ import android.content.Intent
 import com.example.core.navigation.Navigation
 import com.example.mycart.MyCartActivity
 import com.example.productdetails.ProductDetailsActivity
+import javax.inject.Inject
 
-class NavigationImpl(): Navigation {
+class NavigationImpl @Inject constructor() : Navigation {
 
     override fun toMainActivity(currentActivity: Activity) {
         val myIntent = Intent(currentActivity, MainActivity::class.java)

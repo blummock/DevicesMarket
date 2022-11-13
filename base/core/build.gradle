@@ -37,6 +37,7 @@ dependencies {
     implementation mlibs.kotlinCore
     implementation mlibs.appCompat
     testImplementation mlibs.junit
+    implementation mlibs.dagger
     androidTestImplementation mlibs.junitExt
     androidTestImplementation mlibs.espresso
 }

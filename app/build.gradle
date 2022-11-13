@@ -51,6 +51,8 @@ dependencies {
     implementation mlibs.viewModel
     implementation mlibs.navigationFragment
     implementation mlibs.navigation
+    implementation mlibs.dagger
+    kapt mlibs.daggerKapt
     testImplementation mlibs.junit
     androidTestImplementation mlibs.junitExt
     androidTestImplementation mlibs.espresso

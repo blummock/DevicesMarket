@@ -1,6 +1,5 @@
 package com.example.devicesmarket
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,26 +9,37 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.AbstractApp
+import com.example.core.AbstractAppComponent
+import com.example.core.ActivityWithAppComponent
+import com.example.core.navigation.Navigation
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
-import com.example.productdetails.ProductDetailsActivity
+import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ActivityWithAppComponent() {
+
+    @Inject
+    lateinit var navigation: Navigation
 
     private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
+        DaggerActivityComponent.builder()
+            .abstractAppComponent(appComponent)
+            .build()
+            .inject(this)
+
         setContentView(binding.root)
         val adapter = ProductsAdapter()
         binding.devicesRecycler.adapter = adapter
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
             Triple(R.string.phones_string, R.drawable.layer_phones) {
-               Log.d("AAAAAA", "BBBBBBBB")
+                Log.d("AAAAAA", "BBBBBBBB")
             },
             Triple(R.string.computer_string, R.drawable.layer_phones) {
                 Toast.makeText(
@@ -96,10 +106,8 @@ class MainActivity : AppCompatActivity() {
         binding.filterLayout.doneButton.setOnClickListener {
             stateFilter(false)
         }
-        binding.bucketButton.setOnClickListener {
-            val myIntent = Intent(this, com.example.mycart.MyCartActivity::class.java)
-            startActivity(myIntent)
-            finish()
+        binding.toCartButton.setOnClickListener {
+            navigation.toMyCartActivity(this)
         }
     }
 
@@ -114,18 +122,22 @@ class MainActivity : AppCompatActivity() {
             binding.deviceTitle.text = deviceItem.brand
             binding.deviceCost.text = deviceItem.cost
             binding.root.setOnClickListener {
-                (application as MyApp).getNavigation().toProductDetailsActivity(this@MainActivity)
+                navigation.toProductDetailsActivity(this@MainActivity)
             }
         }
     }
 
     inner class ProductsAdapter :
-        ListAdapter<com.example.core.DeviceItem, ProductHolder>(object : DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
+        ListAdapter<com.example.core.DeviceItem, ProductHolder>(object :
+            DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
 
             override fun areItemsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
                 oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
+            override fun areContentsTheSame(
+                oldItem: com.example.core.DeviceItem,
+                newItem: com.example.core.DeviceItem
+            ) =
                 oldItem.brand == newItem.brand
         }) {
 
