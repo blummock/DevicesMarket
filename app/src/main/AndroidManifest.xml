@@ -17,7 +17,7 @@
         android:theme="@style/Theme.DevicesMarket"
         tools:targetApi="31">
         <activity
-            android:name=".main_market.MainActivity"
+            android:name=".main_market.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

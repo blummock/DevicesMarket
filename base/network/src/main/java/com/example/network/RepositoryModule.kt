@@ -3,20 +3,26 @@ package com.example.network
 import com.example.core.repo.BasketRepository
 import com.example.core.repo.MarketRepository
 import com.example.core.repo.ProductRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-class RepositoryModule {
+interface RepositoryModule {
 
-    @Provides
-    fun provideMarketRepository(retrofit: Retrofit): MarketRepository = retrofit.create(MarketApi::class.java)
+    companion object {
+        @Provides
+        fun provideApi(retrofit: Retrofit) = retrofit.create(MarketApi::class.java)
+    }
 
-    @Provides
-    fun provideDeviceRepository(retrofit: Retrofit): ProductRepository = retrofit.create(MarketApi::class.java)
+    @Binds
+    fun provideMarketRepository(marketApi: MarketApi): MarketRepository
 
-    @Provides
-    fun provideBasketRepository(retrofit: Retrofit): BasketRepository = retrofit.create(MarketApi::class.java)
+    @Binds
+    fun provideDeviceRepository(marketApi: MarketApi): ProductRepository
+
+    @Binds
+    fun provideBasketRepository(marketApi: MarketApi): BasketRepository
 
 }

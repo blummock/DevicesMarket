@@ -5,6 +5,9 @@ import com.example.core.repo.AbstractRepositoryComponent
 import com.example.devicesmarket.navigation.NavigationModule
 import dagger.Component
 
-@Component(dependencies = [AbstractRepositoryComponent::class], modules = [NavigationModule::class])
+@Component(
+    dependencies = [AbstractRepositoryComponent::class],
+    modules = [NavigationModule::class]
+)
 interface AppComponent : AbstractAppComponent {
 }

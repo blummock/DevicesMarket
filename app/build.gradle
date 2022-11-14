@@ -49,7 +49,6 @@ dependencies {
     implementation mlibs.material
     implementation mlibs.constraintLayout
     implementation mlibs.liveData
-    implementation mlibs.viewModel
     implementation mlibs.navigationFragment
     implementation mlibs.navigation
     implementation mlibs.dagger

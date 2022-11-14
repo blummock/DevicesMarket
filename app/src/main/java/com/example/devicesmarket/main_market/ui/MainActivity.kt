@@ -1,34 +1,37 @@
-package com.example.devicesmarket.main_market
+package com.example.devicesmarket.main_market.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.BestSellerEntity
 import com.example.core.di.ActivityWithAppComponent
+import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
-import com.example.core.repo.MarketRepository
 import com.example.devicesmarket.R
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
+import com.example.devicesmarket.main_market.di.DaggerMarketActivityComponent
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class MainActivity : ActivityWithAppComponent() {
 
-    @Inject lateinit var navigation: Navigation
+    @Inject
+    lateinit var navigation: Navigation
 
     @Inject
-    lateinit var retrofit: MarketRepository
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val wordsViewModel by viewModels<MarketActivityViewModel> {
+        viewModelFactory
+    }
 
     private lateinit var binding: ActivityMainBinding
 
@@ -37,13 +40,17 @@ class MainActivity : ActivityWithAppComponent() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        DaggerActivityComponent.builder()
+        val dagger = DaggerMarketActivityComponent.builder()
             .abstractAppComponent(appComponent)
-            .build().inject(this)
+            .build()
+        dagger.inject(this)
         val adapter = ProductsAdapter()
-
-
         binding.devicesRecycler.adapter = adapter
+
+        wordsViewModel.marketList.observe(this) {
+            adapter.submitList(it.bestSeller)
+        }
+
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
             Triple(R.string.phones_string, R.drawable.layer_phones) {
                 Log.d("AAAAAA", "BBBBBBBB")
@@ -78,11 +85,11 @@ class MainActivity : ActivityWithAppComponent() {
             }
         ))
 
-        CoroutineScope(
-            Job() + Dispatchers.Main
-        ).launch {
-            adapter.submitList(retrofit.getMarketList().bestSeller)
-        }
+//        CoroutineScope(
+//            Job() + Dispatchers.Main
+//        ).launch {
+//            adapter.submitList(retrofit.getMarketList().bestSeller)
+//        }
     }
 
 
@@ -126,7 +133,7 @@ class MainActivity : ActivityWithAppComponent() {
                     .into(deviceImage)
             }
             binding.root.setOnClickListener {
-//                navigation.toProductDetailsActivity(this@MainActivity)
+                navigation.toProductDetailsActivity(this@MainActivity)
             }
         }
     }

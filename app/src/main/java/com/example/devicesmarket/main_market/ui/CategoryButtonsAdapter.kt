@@ -1,4 +1,4 @@
-package com.example.devicesmarket.main_market
+package com.example.devicesmarket.main_market.ui
 
 import android.content.Context
 import android.view.LayoutInflater
