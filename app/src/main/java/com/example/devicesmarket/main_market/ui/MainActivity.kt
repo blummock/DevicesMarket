@@ -52,31 +52,31 @@ class MainActivity : ActivityWithAppComponent() {
         }
 
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
-            Triple(R.string.phones_string, R.drawable.layer_phones) {
+            Triple(R.string.phones_string, R.drawable.ic_phone) {
                 Log.d("AAAAAA", "BBBBBBBB")
             },
-            Triple(R.string.computer_string, R.drawable.layer_phones) {
+            Triple(R.string.computer_string, R.drawable.ic_pc) {
                 Toast.makeText(
                     baseContext,
                     "Computer",
                     Toast.LENGTH_SHORT
                 ).show()
             },
-            Triple(R.string.health_string, R.drawable.layer_phones) {
+            Triple(R.string.health_string, R.drawable.ic_heart) {
                 Toast.makeText(
                     baseContext,
                     "Health",
                     Toast.LENGTH_SHORT
                 ).show()
             },
-            Triple(R.string.books_string, R.drawable.layer_phones) {
+            Triple(R.string.books_string, R.drawable.ic_book) {
                 Toast.makeText(
                     baseContext,
                     "Book",
                     Toast.LENGTH_SHORT
                 ).show()
             },
-            Triple(R.string.another_string, R.drawable.layer_phones) {
+            Triple(R.string.another_string, R.drawable.ic_bucket) {
                 Toast.makeText(
                     baseContext,
                     "Another",

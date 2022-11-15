@@ -13,7 +13,8 @@
         android:layout_height="70dp"
         android:layout_gravity="center"
         android:background="@drawable/category_round_button"
-        tool:foreground="@drawable/layer_phones"
+        tool:foreground="@drawable/ic_phone"
+        android:foregroundGravity="center"
         android:foregroundTint="@color/tint_button_colors" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/phones_string"
+        android:textStyle="bold"
         android:textColor="@color/title_colors"
         android:textSize="6pt" />
 </androidx.appcompat.widget.LinearLayoutCompat>

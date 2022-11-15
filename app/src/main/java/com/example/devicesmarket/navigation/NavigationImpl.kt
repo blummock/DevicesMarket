@@ -10,18 +10,18 @@ import javax.inject.Inject
 
 class NavigationImpl @Inject constructor() : Navigation {
 
-    override fun toMainActivity(currentActivity: Activity) {
-        val myIntent = Intent(currentActivity, MainActivity::class.java)
+    private fun toActivity(currentActivity: Activity, cls: Class<*>) {
+        val myIntent = Intent(currentActivity, cls)
         currentActivity.startActivity(myIntent)
+        currentActivity.finish()
     }
 
-    override fun toMyCartActivity(currentActivity: Activity) {
-        val myIntent = Intent(currentActivity, MyCartActivity::class.java)
-        currentActivity.startActivity(myIntent)
-    }
+    override fun toMainActivity(currentActivity: Activity) =
+        toActivity(currentActivity, MainActivity::class.java)
 
-    override fun toProductDetailsActivity(currentActivity: Activity) {
-        val myIntent = Intent(currentActivity, ProductDetailsActivity::class.java)
-        currentActivity.startActivity(myIntent)
-    }
+    override fun toMyCartActivity(currentActivity: Activity) =
+        toActivity(currentActivity, MyCartActivity::class.java)
+
+    override fun toProductDetailsActivity(currentActivity: Activity) =
+        toActivity(currentActivity, ProductDetailsActivity::class.java)
 }

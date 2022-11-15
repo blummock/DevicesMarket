@@ -82,7 +82,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/searchText"
-            app:layout_constraintTop_toBottomOf="@id/buttonsRecycler" />
+            app:layout_constraintTop_toBottomOf="@id/buttons_recycler" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/second"
             android:layout_width="50dp"
@@ -93,7 +93,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/searchText"
-            app:layout_constraintTop_toBottomOf="@id/buttonsRecycler" />
+            app:layout_constraintTop_toBottomOf="@id/buttons_recycler" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/firstButton"
             android:layout_marginStart="10dp"

@@ -6,14 +6,12 @@ plugins {
 apply from: '../../dependencies.gradle'
 
 android {
-    namespace 'com.example.productdetails'
+    namespace 'com.example.splash'
     compileSdk androidSdkVersion
 
     defaultConfig {
         minSdk androidMinSdkVersion
         targetSdk androidSdkVersion
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -23,22 +21,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
+
     implementation project(":base:core")
-    implementation mlibs.kotlinCore
-    implementation mlibs.appCompat
-    implementation mlibs.material
-    implementation mlibs.viewModel
-    implementation mlibs.navigation
-    implementation mlibs.liveData
     implementation mlibs.dagger
     kapt mlibs.daggerKapt
-    testImplementation mlibs.junit
-    androidTestImplementation mlibs.junitExt
-    androidTestImplementation mlibs.espresso
+    implementation mlibs.appCompat
 }

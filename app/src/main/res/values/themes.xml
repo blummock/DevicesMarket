@@ -12,6 +12,7 @@
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/StyleRoundedButton</item>
         <item name="materialCardViewStyle">@style/CardViewStyle</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 
     <style name="StyleRoundedButton" parent="Widget.MaterialComponents.Button">
@@ -27,5 +28,14 @@
 
     <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">20dp</item>
+    </style>
+    
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/mark_pro</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/dark</item>
     </style>
 </resources>

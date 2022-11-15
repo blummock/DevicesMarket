@@ -13,6 +13,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="@string/select_category_string"
+        android:textStyle="bold"
         android:textSize="10pt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +32,7 @@
         app:layout_constraintTop_toTopOf="@id/titleCategory" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/buttonsRecycler"
+        android:id="@+id/buttons_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -58,7 +59,8 @@
         app:boxBackgroundColor="@color/white"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
-        app:startIconDrawable="@drawable/layer_phones">
+        app:startIconTint="@color/orange"
+        app:startIconDrawable="@drawable/ic_find">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchInput"
             android:layout_width="match_parent"
@@ -80,10 +82,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:foreground="@drawable/ic_window"
+        android:foregroundGravity="center"
         android:background="@drawable/round_background_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/searchText"
-        app:layout_constraintTop_toBottomOf="@id/buttonsRecycler" />
-
+        app:layout_constraintTop_toBottomOf="@id/buttons_recycler" />
 </androidx.constraintlayout.widget.ConstraintLayout>

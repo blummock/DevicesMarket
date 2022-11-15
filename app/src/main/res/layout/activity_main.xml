@@ -120,9 +120,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:paddingStart="40dp"
-            android:paddingEnd="40dp"
-            android:orientation="horizontal">
+            android:paddingEnd="40dp">
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/productName"
                 android:layout_width="wrap_content"
@@ -132,28 +133,31 @@
                 android:text="@string/explorer_string"
                 android:textColor="@color/white"
                 android:textSize="10pt" />
+
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/to_cart_button"
-                android:src="@drawable/ic_bucket"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:layout_gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp"/>
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_bucket" />
+
             <androidx.appcompat.widget.AppCompatImageButton
-                android:src="@drawable/ic_like"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:layout_gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp"/>
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_like" />
+
             <androidx.appcompat.widget.AppCompatImageButton
-                android:src="@drawable/ic_account"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:layout_gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp"/>
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_account" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
 
