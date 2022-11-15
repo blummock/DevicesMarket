@@ -3,10 +3,13 @@ package com.example.mycart
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.data.BasketItemEntity
 import com.example.core.di.ActivityWithAppComponent
+import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
 import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
@@ -14,7 +17,15 @@ import javax.inject.Inject
 
 class MyCartActivity : ActivityWithAppComponent() {
 
-    @Inject lateinit var navigation: Navigation
+    @Inject
+    lateinit var navigation: Navigation
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val viewModel by viewModels<MyCartViewModel> {
+        viewModelFactory
+    }
 
     private lateinit var binding: ActivityMyCartBinding
 
@@ -25,38 +36,32 @@ class MyCartActivity : ActivityWithAppComponent() {
         DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
         val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
-        adapter.submitList(
-            arrayListOf(
-                com.example.core.DeviceItem("Samsung S9", "$500", "$600", 1),
-                com.example.core.DeviceItem("Xiaomi Mi5", "$300", "$400", 1),
-                com.example.core.DeviceItem("Iphone XS 256", "$1500", "$1650", 1),
-                com.example.core.DeviceItem("Samsung A9", "$200", "$320", 1),
-            )
-        )
+        viewModel.basketList.observe(this) {
+            adapter.submitList(it.basket)
+        }
     }
 
     inner class CartItemHolder(private val binding: CartItemCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(deviceItem: com.example.core.DeviceItem) {
-            binding.itemName.text = deviceItem.brand
-            binding.itemPrice.text = deviceItem.price
+        fun bind(item: BasketItemEntity) {
+            binding.itemName.text = item.title
+            binding.itemPrice.text = item.price.toString()
         }
     }
 
-    inner class CartItemsAdapter :
-        ListAdapter<com.example.core.DeviceItem, CartItemHolder>(object :
-            DiffUtil.ItemCallback<com.example.core.DeviceItem>() {
+    inner class CartItemsAdapter : ListAdapter<BasketItemEntity, CartItemHolder>(object :
+        DiffUtil.ItemCallback<BasketItemEntity>() {
 
-            override fun areItemsTheSame(oldItem: com.example.core.DeviceItem, newItem: com.example.core.DeviceItem) =
-                oldItem == newItem
+        override fun areItemsTheSame(oldItem: BasketItemEntity, newItem: BasketItemEntity) =
+            oldItem == newItem
 
-            override fun areContentsTheSame(
-                oldItem: com.example.core.DeviceItem,
-                newItem: com.example.core.DeviceItem
-            ) =
-                oldItem.brand == newItem.brand
-        }) {
+        override fun areContentsTheSame(
+            oldItem: BasketItemEntity,
+            newItem: BasketItemEntity
+        ) = oldItem.id == newItem.id
+    }
+    ) {
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemHolder =

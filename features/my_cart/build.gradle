@@ -40,6 +40,9 @@ dependencies {
     implementation mlibs.kotlinCore
     implementation mlibs.appCompat
     implementation mlibs.material
+    implementation mlibs.viewModel
+    implementation mlibs.navigation
+    implementation mlibs.liveData
     implementation mlibs.dagger
     kapt mlibs.daggerKapt
     testImplementation mlibs.junit

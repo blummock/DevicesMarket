@@ -20,7 +20,7 @@ interface RepositoryModule {
     fun provideMarketRepository(marketApi: MarketApi): MarketRepository
 
     @Binds
-    fun provideDeviceRepository(marketApi: MarketApi): ProductRepository
+    fun provideProductRepository(marketApi: MarketApi): ProductRepository
 
     @Binds
     fun provideBasketRepository(marketApi: MarketApi): BasketRepository
