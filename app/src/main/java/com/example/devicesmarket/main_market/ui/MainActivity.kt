@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.core.data.BestSellerEntity
 import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
@@ -17,6 +19,7 @@ import com.example.devicesmarket.R
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
 import com.example.devicesmarket.main_market.di.DaggerMarketActivityComponent
+import com.example.productdetails.ProductFragment
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -46,9 +49,11 @@ class MainActivity : ActivityWithAppComponent() {
         dagger.inject(this)
         val adapter = ProductsAdapter()
         binding.devicesRecycler.adapter = adapter
-
+        val hsAdapter = HotSalesListAdapter()
+        binding.pager.adapter = hsAdapter
         wordsViewModel.marketList.observe(this) {
             adapter.submitList(it.bestSeller)
+            hsAdapter.submitList(it.homeStore)
         }
 
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
@@ -84,12 +89,6 @@ class MainActivity : ActivityWithAppComponent() {
                 ).show()
             }
         ))
-
-//        CoroutineScope(
-//            Job() + Dispatchers.Main
-//        ).launch {
-//            adapter.submitList(retrofit.getMarketList().bestSeller)
-//        }
     }
 
 

@@ -6,6 +6,10 @@
         <item>Apple</item>
         <item>Google</item>
     </string-array>
+    <string-array name="locations">
+        <item>Narre Warren East</item>
+        <item>Alun Alun German, Sugio</item>
+    </string-array>
     <string-array name="prices_array">
         <item>300$ - 500$</item>
         <item>500$ - 700$</item>
@@ -43,4 +47,8 @@
     <string name="delivery_string">Delivery</string>
     <string name="explorer_string">• Explorer</string>
     <string name="dollar">$%d</string>
+    <string name="hot_sales_string">Hot sales</string>
+    <string name="see_more_string">see more</string>
+    <string name="best_seller_string">Best Seller</string>
+    <string name="new_string">New</string>
 </resources>

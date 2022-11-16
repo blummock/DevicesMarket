@@ -62,6 +62,7 @@
             android:layout_height="50dp"
             android:dropDownVerticalOffset="20dp"
             android:entries="@array/brand_array"
+            style="@style/SpinnerStyle"
             app:layout_constraintEnd_toEndOf="@id/doneButton"
             app:layout_constraintStart_toStartOf="@id/closeButton"
             app:layout_constraintTop_toBottomOf="@id/brandTitle"
@@ -86,6 +87,7 @@
             android:layout_height="50dp"
             android:dropDownVerticalOffset="20dp"
             android:entries="@array/prices_array"
+            style="@style/SpinnerStyle"
             app:layout_constraintEnd_toEndOf="@id/doneButton"
             app:layout_constraintStart_toStartOf="@id/closeButton"
             app:layout_constraintTop_toBottomOf="@id/priceTitle" />
@@ -109,6 +111,7 @@
             android:layout_marginBottom="20dp"
             android:dropDownVerticalOffset="20dp"
             android:entries="@array/size_array"
+            style="@style/SpinnerStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/doneButton"
             app:layout_constraintStart_toStartOf="@id/closeButton"
