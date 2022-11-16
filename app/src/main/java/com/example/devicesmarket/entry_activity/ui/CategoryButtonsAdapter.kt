@@ -1,4 +1,4 @@
-package com.example.devicesmarket.main_market.ui
+package com.example.devicesmarket.entry_activity.ui
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,6 +11,8 @@ class CategoryButtonsAdapter(private val actions: List<Triple<Int, Int, () -> Un
     RecyclerView.Adapter<CategoryButtonsAdapter.ButtonHolder>() {
 
     private var selected: CategoryButtonLayoutBinding? = null
+
+    private var isInit = false
 
     override fun onBindViewHolder(holder: ButtonHolder, position: Int) {
         holder.bind(actions[position])
@@ -32,6 +34,17 @@ class CategoryButtonsAdapter(private val actions: List<Triple<Int, Int, () -> Un
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            if (!isInit) {
+                binding.apply {
+                    button.isSelected = true
+                    titleText.isSelected = true
+                }
+                isInit = true
+                selected = binding
+            }
+        }
+
         fun bind(action: Triple<Int, Int, () -> Unit>) {
             binding.run {
                 button.foreground = AppCompatResources.getDrawable(context, action.second)
@@ -46,8 +59,6 @@ class CategoryButtonsAdapter(private val actions: List<Triple<Int, Int, () -> Un
                 }
             }
         }
-
-
     }
 
 }

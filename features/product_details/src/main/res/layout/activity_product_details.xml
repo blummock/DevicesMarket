@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/headerGroup"
+        android:id="@+id/header_group"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -15,9 +15,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/closeButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/close_button"
+            style="@style/StyleSquareButton"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/black"
             android:foreground="@drawable/ic_baseline_navigate_before_24"
@@ -28,17 +27,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="@string/filter_options_string"
             android:textColor="@color/black"
             android:textSize="11pt" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/doneButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/cart_button"
+            style="@style/StyleSquareButton"
             android:layout_marginEnd="10dp"
             android:backgroundTint="@color/orange"
-            android:foreground="@drawable/ic_baseline_navigate_before_24"
+            android:foreground="@drawable/ic_bucket"
             android:foregroundGravity="center" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -48,10 +47,10 @@
         android:layout_height="320dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/header_group" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/bottom_filter"
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="parent">
 
         <include
-            android:id="@+id/deviceInfoLayout"
+            android:id="@+id/device_info_layout"
             layout="@layout/device_info_layout" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

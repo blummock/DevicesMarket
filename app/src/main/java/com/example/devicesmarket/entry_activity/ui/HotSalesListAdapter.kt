@@ -1,4 +1,4 @@
-package com.example.devicesmarket.main_market.ui
+package com.example.devicesmarket.entry_activity.ui
 
 import android.view.LayoutInflater
 import android.view.View

@@ -45,7 +45,7 @@
             app:layout_constraintTop_toTopOf="@id/closeButton" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/brandTitle"
+            android:id="@+id/info_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -65,7 +65,7 @@
             style="@style/SpinnerStyle"
             app:layout_constraintEnd_toEndOf="@id/doneButton"
             app:layout_constraintStart_toStartOf="@id/closeButton"
-            app:layout_constraintTop_toBottomOf="@id/brandTitle"
+            app:layout_constraintTop_toBottomOf="@id/info_title"
             app:strokeColor="@color/black"
             app:strokeWidth="50dp" />
 

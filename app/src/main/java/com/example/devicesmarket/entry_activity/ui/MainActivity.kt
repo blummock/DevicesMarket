@@ -1,4 +1,4 @@
-package com.example.devicesmarket.main_market.ui
+package com.example.devicesmarket.entry_activity.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,20 +6,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.core.data.BestSellerEntity
 import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
-import com.example.devicesmarket.R
+import com.example.core.R
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
-import com.example.devicesmarket.main_market.di.DaggerMarketActivityComponent
-import com.example.productdetails.ProductFragment
+import com.example.devicesmarket.entry_activity.di.DaggerMarketActivityComponent
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
@@ -55,7 +52,6 @@ class MainActivity : ActivityWithAppComponent() {
             adapter.submitList(it.bestSeller)
             hsAdapter.submitList(it.homeStore)
         }
-
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
             Triple(R.string.phones_string, R.drawable.ic_phone) {
                 Log.d("AAAAAA", "BBBBBBBB")
@@ -94,7 +90,7 @@ class MainActivity : ActivityWithAppComponent() {
 
     override fun onResume() {
         super.onResume()
-        val filter = binding.bottomFilter
+        val filter = binding.bottomLayout
         fun stateFilter(isShow: Boolean) {
             if (filter.isActivated != isShow) {
                 filter.animate().translationY((filter.height * if (isShow) -1 else 1).toFloat())

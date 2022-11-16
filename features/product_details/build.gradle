@@ -37,6 +37,7 @@ dependencies {
     implementation mlibs.navigation
     implementation mlibs.liveData
     implementation mlibs.dagger
+    implementation mlibs.picasso
     kapt mlibs.daggerKapt
     testImplementation mlibs.junit
     androidTestImplementation mlibs.junitExt

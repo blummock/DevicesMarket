@@ -203,7 +203,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/bottom_filter"
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"

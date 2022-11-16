@@ -39,8 +39,6 @@
     <string name="health_string">Health</string>
     <string name="search_string">Search</string>
     <string name="select_color_and_capacity_string">Select color and capacity</string>
-    <string name="_256_gb_string">256 Gb</string>
-    <string name="_128_gb_string">128 Gb</string>
     <string name="add_address_string">Add address</string>
     <string name="my_cart_string">My Cart</string>
     <string name="total_string">Total</string>
@@ -51,4 +49,9 @@
     <string name="see_more_string">see more</string>
     <string name="best_seller_string">Best Seller</string>
     <string name="new_string">New</string>
+    <string name="shop_string">Shop</string>
+    <string name="details_string">Details</string>
+    <string name="features_string">Features</string>
+    <string name="add_to_cart_string">Add to Cart   $%d</string>
+    <string name="store_gb_string">%sGB</string>
 </resources>

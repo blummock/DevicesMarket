@@ -20,7 +20,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@drawable/unnamed" />
+                tools:src="@drawable/ic_trash" />
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.LinearLayoutCompat

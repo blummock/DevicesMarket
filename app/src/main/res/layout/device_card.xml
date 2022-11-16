@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/device_image"
-            android:src="@drawable/unnamed"
+            tools:src="@drawable/ic_trash"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,7 +1,7 @@
-package com.example.devicesmarket.main_market.di
+package com.example.devicesmarket.entry_activity.di
 
 import com.example.core.di.ViewModelFactory
-import com.example.devicesmarket.main_market.ui.MarketActivityViewModel
+import com.example.devicesmarket.entry_activity.ui.MarketActivityViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Provider

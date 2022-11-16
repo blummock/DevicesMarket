@@ -1,7 +1,7 @@
-package com.example.devicesmarket.main_market.di
+package com.example.devicesmarket.entry_activity.di
 
 import com.example.core.di.AbstractAppComponent
-import com.example.devicesmarket.main_market.ui.MainActivity
+import com.example.devicesmarket.entry_activity.ui.MainActivity
 import dagger.Component
 
 @Component(
