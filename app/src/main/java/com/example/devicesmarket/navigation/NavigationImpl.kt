@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.example.core.navigation.Navigation
 import com.example.devicesmarket.entry_activity.ui.MainActivity
-import com.example.mycart.MyCartActivity
+import com.example.mycart.ui.MyCartActivity
 import com.example.productdetails.ui.ProductDetailsActivity
 import javax.inject.Inject
 

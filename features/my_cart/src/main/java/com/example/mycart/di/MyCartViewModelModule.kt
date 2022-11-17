@@ -1,6 +1,7 @@
-package com.example.mycart
+package com.example.mycart.di
 
 import com.example.core.di.ViewModelFactory
+import com.example.mycart.ui.MyCartViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Provider

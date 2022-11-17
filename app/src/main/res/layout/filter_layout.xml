@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/closeButton"
+            android:id="@+id/close_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
@@ -30,19 +30,19 @@
             android:text="@string/filter_options_string"
             android:textColor="@color/black"
             android:textSize="11pt"
-            app:layout_constraintEnd_toStartOf="@+id/doneButton"
-            app:layout_constraintStart_toEndOf="@id/closeButton"
-            app:layout_constraintTop_toTopOf="@id/closeButton" />
+            app:layout_constraintEnd_toStartOf="@+id/done_button"
+            app:layout_constraintStart_toEndOf="@id/close_button"
+            app:layout_constraintTop_toTopOf="@id/close_button" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/doneButton"
+            android:id="@+id/done_button"
             android:layout_width="wrap_content"
             android:backgroundTint="@color/orange"
             android:layout_height="50dp"
             android:layout_marginEnd="10dp"
             android:text="@string/done_string"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/closeButton" />
+            app:layout_constraintTop_toTopOf="@id/close_button" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/info_title"
@@ -52,9 +52,9 @@
             android:text="@string/brand_string"
             android:textColor="@color/black"
             android:textSize="11pt"
-            app:layout_constraintEnd_toStartOf="@+id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
-            app:layout_constraintTop_toBottomOf="@id/closeButton" />
+            app:layout_constraintEnd_toStartOf="@+id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
+            app:layout_constraintTop_toBottomOf="@id/close_button" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/brandSpinner"
@@ -63,8 +63,8 @@
             android:dropDownVerticalOffset="20dp"
             android:entries="@array/brand_array"
             style="@style/SpinnerStyle"
-            app:layout_constraintEnd_toEndOf="@id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintEnd_toEndOf="@id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
             app:layout_constraintTop_toBottomOf="@id/info_title"
             app:strokeColor="@color/black"
             app:strokeWidth="50dp" />
@@ -77,8 +77,8 @@
             android:text="@string/price_string"
             android:textColor="@color/black"
             android:textSize="11pt"
-            app:layout_constraintEnd_toStartOf="@+id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintEnd_toStartOf="@+id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
             app:layout_constraintTop_toBottomOf="@id/brandSpinner" />
 
         <androidx.appcompat.widget.AppCompatSpinner
@@ -88,8 +88,8 @@
             android:dropDownVerticalOffset="20dp"
             android:entries="@array/prices_array"
             style="@style/SpinnerStyle"
-            app:layout_constraintEnd_toEndOf="@id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintEnd_toEndOf="@id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
             app:layout_constraintTop_toBottomOf="@id/priceTitle" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -100,8 +100,8 @@
             android:text="@string/size_string"
             android:textColor="@color/black"
             android:textSize="11pt"
-            app:layout_constraintEnd_toStartOf="@+id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintEnd_toStartOf="@+id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
             app:layout_constraintTop_toBottomOf="@id/priceSpinner" />
 
         <androidx.appcompat.widget.AppCompatSpinner
@@ -113,8 +113,8 @@
             android:entries="@array/size_array"
             style="@style/SpinnerStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/doneButton"
-            app:layout_constraintStart_toStartOf="@id/closeButton"
+            app:layout_constraintEnd_toEndOf="@id/done_button"
+            app:layout_constraintStart_toStartOf="@id/close_button"
             app:layout_constraintTop_toBottomOf="@id/sizeTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

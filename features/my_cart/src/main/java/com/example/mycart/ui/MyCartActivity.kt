@@ -1,4 +1,4 @@
-package com.example.mycart
+package com.example.mycart.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,8 @@ import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
 import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
+import com.example.mycart.di.DaggerMyCartActivityComponent
+import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
 class MyCartActivity : ActivityWithAppComponent() {
@@ -34,10 +36,19 @@ class MyCartActivity : ActivityWithAppComponent() {
         binding = ActivityMyCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
+        initRecycler()
+        binding.closeButton.setOnClickListener {
+            navigation.toMainActivity(this)
+        }
+    }
+
+    private fun initRecycler() {
         val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
         viewModel.basketList.observe(this) {
             adapter.submitList(it.basket)
+            binding.delivery.text = it.delivery
+            binding.total.text = getString(com.example.core.R.string.dollar_us, it.total)
         }
     }
 
@@ -45,11 +56,16 @@ class MyCartActivity : ActivityWithAppComponent() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: BasketItemEntity) {
-            binding.itemName.text = item.title
-            binding.itemPrice.text = item.price.toString()
+            binding.apply {
+                itemName.text = item.title
+                itemPrice.text = getString(com.example.core.R.string.dollar_f, item.price)
+                Picasso.get()
+                    .load(item.images)
+                    .into(image)
+            }
         }
     }
-
+    
     inner class CartItemsAdapter : ListAdapter<BasketItemEntity, CartItemHolder>(object :
         DiffUtil.ItemCallback<BasketItemEntity>() {
 
@@ -62,7 +78,6 @@ class MyCartActivity : ActivityWithAppComponent() {
         ) = oldItem.id == newItem.id
     }
     ) {
-
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemHolder =
             CartItemHolder(

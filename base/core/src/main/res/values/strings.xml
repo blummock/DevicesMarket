@@ -44,7 +44,9 @@
     <string name="total_string">Total</string>
     <string name="delivery_string">Delivery</string>
     <string name="explorer_string">• Explorer</string>
-    <string name="dollar">$%d</string>
+    <string name="dollar">$%f</string>
+    <string name="dollar_f">$%.2f</string>
+    <string name="dollar_us">$%,d us</string>
     <string name="hot_sales_string">Hot sales</string>
     <string name="see_more_string">see more</string>
     <string name="best_seller_string">Best Seller</string>
@@ -52,6 +54,7 @@
     <string name="shop_string">Shop</string>
     <string name="details_string">Details</string>
     <string name="features_string">Features</string>
-    <string name="add_to_cart_string">Add to Cart   $%d</string>
+    <string name="add_to_cart_string">Add to Cart   $%,d</string>
     <string name="store_gb_string">%sGB</string>
+    <string name="checkout_string">Checkout</string>
 </resources>

@@ -1,6 +1,7 @@
-package com.example.mycart
+package com.example.mycart.di
 
 import com.example.core.di.AbstractAppComponent
+import com.example.mycart.ui.MyCartActivity
 import dagger.Component
 
 @Component(dependencies = [AbstractAppComponent::class], modules = [MyCartViewModelModule::class])

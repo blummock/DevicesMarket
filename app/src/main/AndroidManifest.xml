@@ -23,7 +23,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.productdetails.ui.ProductDetailsActivity"
+            android:name="com.example.mycart.ui.MyCartActivity"
             android:exported="true"
             android:theme="@style/Theme.DevicesMarket">
             <intent-filter>
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.splash.SplashActivity" />
-        <activity android:name="com.example.mycart.MyCartActivity" />
+        <activity android:name="com.example.productdetails.ui.ProductDetailsActivity" />
     </application>
 
 </manifest>
