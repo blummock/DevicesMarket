@@ -16,6 +16,5 @@ rootProject.name = "DevicesMarket"
 include ':app'
 include ':features:product_details'
 include ':features:my_cart'
-include ':features:splash'
 include ':base:core'
 include ':base:network'

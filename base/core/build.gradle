@@ -34,6 +34,7 @@ dependencies {
     implementation mlibs.gson
     implementation mlibs.material
     implementation mlibs.appCompat
+    implementation mlibs.splash
     androidTestImplementation mlibs.junitExt
     androidTestImplementation mlibs.espresso
 }

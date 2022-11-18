@@ -1,7 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DevicesMarket" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="FirstSplashTheme" parent="Theme.SplashScreen">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="windowSplashScreenBackground">@color/dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_background</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.DevicesMarket</item>
+    </style>
+
+    <style name="Theme.DevicesMarket" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textColorTertiary">@color/black</item>
         <item name="android:windowBackground">@color/light_gray</item>
         <!-- Primary brand color. -->
@@ -36,7 +43,7 @@
     <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">20dp</item>
     </style>
-    
+
     <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/mark_pro</item>
     </style>
@@ -53,11 +60,6 @@
 
     <style name="SpinnerItemStyle" parent="Widget.AppCompat.TextView.SpinnerItem">
         <item name="android:textSize">1pt</item>
-    </style>
-
-    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:statusBarColor">@color/dark</item>
     </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">

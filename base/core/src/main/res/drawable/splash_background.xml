@@ -5,5 +5,5 @@
             <solid android:color="@color/dark"/>
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_splash" android:gravity="center"/>
+    <item android:drawable="@drawable/ic_splash" android:gravity="center" android:height="60dp" android:width="100dp"/>
 </layer-list>

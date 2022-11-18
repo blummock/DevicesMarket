@@ -35,9 +35,9 @@ dependencies {
 
     implementation project(":features:product_details")
     implementation project(":features:my_cart")
-    implementation project(":features:splash")
     implementation project(":base:core")
     implementation project(":base:network")
+    implementation mlibs.splash
     implementation mlibs.paging
     implementation mlibs.kotlinCore
     implementation mlibs.appCompat
