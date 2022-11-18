@@ -11,7 +11,7 @@ data class ProductEntity(
     val color: List<String>,
     val images: List<String>,
     val isFavorites: Boolean,
-    val price: Int,
+    val price: Float,
     val rating: Float,
     val sd: String,
     val ssd: String,

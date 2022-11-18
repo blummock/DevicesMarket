@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="@string/filter_options_string"
+            android:text="@string/product_details_string"
             android:textColor="@color/black"
             android:textSize="11pt" />
 

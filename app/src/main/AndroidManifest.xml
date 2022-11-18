@@ -17,21 +17,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevicesMarket"
         tools:targetApi="31">
-        <activity android:name=".entry_activity.ui.MainActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
-            android:name="com.example.mycart.ui.MyCartActivity"
+            android:name=".entry_activity.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.DevicesMarket">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.mycart.ui.MyCartActivity" />
         <activity android:name="com.example.splash.SplashActivity" />
         <activity android:name="com.example.productdetails.ui.ProductDetailsActivity" />
     </application>

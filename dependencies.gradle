@@ -29,6 +29,7 @@ ext {
             gson              : "com.google.code.gson:gson:2.8.9",
             okHttp            : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             okHttpInterceptor : "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
-            picasso           : 'com.squareup.picasso:picasso:2.8'
+            picasso           : "com.squareup.picasso:picasso:2.8",
+            coroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     ]
 }

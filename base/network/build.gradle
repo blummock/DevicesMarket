@@ -35,6 +35,7 @@ dependencies {
     implementation mlibs.gsonConverter
     implementation mlibs.kotlinCore
     implementation mlibs.dagger
+    implementation mlibs.coroutines
     kapt mlibs.daggerKapt
     testImplementation mlibs.junit
     androidTestImplementation mlibs.junitExt

@@ -6,6 +6,8 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.core.data.ProductEntity
 import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
+import com.example.core.navigation.Constants.ARG_COUNT_ITEMS
+import com.example.core.navigation.Constants.CURRENT_ITEM
 import com.example.core.navigation.Navigation
 import com.example.productdetails.databinding.ActivityProductDetailsBinding
 import com.example.productdetails.di.DaggerProductActivityComponent
@@ -25,11 +27,6 @@ class ProductDetailsActivity : ActivityWithAppComponent() {
     }
 
     private lateinit var binding: ActivityProductDetailsBinding
-
-    companion object {
-        const val ARG_COUNT_ITEMS = "count_items"
-        const val CURRENT_ITEM = "current_item"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

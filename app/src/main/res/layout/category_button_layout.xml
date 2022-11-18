@@ -18,7 +18,7 @@
         android:foregroundTint="@color/tint_button_colors" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/titleText"
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -9,11 +9,13 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.R
 import com.example.core.data.BestSellerEntity
 import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
+import com.example.core.navigation.Constants.ARG_COUNT_ITEMS
+import com.example.core.navigation.Constants.CURRENT_ITEM
 import com.example.core.navigation.Navigation
-import com.example.core.R
 import com.example.devicesmarket.databinding.ActivityMainBinding
 import com.example.devicesmarket.databinding.DeviceCardBinding
 import com.example.devicesmarket.entry_activity.di.DaggerMarketActivityComponent
@@ -51,6 +53,9 @@ class MainActivity : ActivityWithAppComponent() {
         wordsViewModel.marketList.observe(this) {
             adapter.submitList(it.bestSeller)
             hsAdapter.submitList(it.homeStore)
+        }
+        wordsViewModel.basketCount.observe(this) {
+            binding.cartCounter.text = if (it == 0) "" else it.toString()
         }
         binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
             Triple(R.string.phones_string, R.drawable.ic_phone) {
@@ -115,7 +120,7 @@ class MainActivity : ActivityWithAppComponent() {
     inner class ProductHolder(private val binding: DeviceCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: BestSellerEntity) {
+        fun bind(item: BestSellerEntity, count: Int) {
             binding.run {
                 deviceTitle.text = item.title
                 discountPrice.text = getString(R.string.dollar, item.discountPrice)
@@ -128,7 +133,10 @@ class MainActivity : ActivityWithAppComponent() {
                     .into(deviceImage)
             }
             binding.root.setOnClickListener {
-                navigation.toProductDetailsActivity(this@MainActivity)
+                val bundle = Bundle()
+                bundle.putInt(ARG_COUNT_ITEMS, count)
+                bundle.putInt(CURRENT_ITEM, item.id)
+                navigation.toProductDetailsActivity(this@MainActivity, bundle)
             }
         }
     }
@@ -158,7 +166,7 @@ class MainActivity : ActivityWithAppComponent() {
             )
 
         override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-            holder.bind(getItem(position))
+            holder.bind(getItem(position), itemCount)
         }
 
     }

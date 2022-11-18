@@ -57,6 +57,7 @@ class MyCartActivity : ActivityWithAppComponent() {
 
         fun bind(item: BasketItemEntity) {
             binding.apply {
+                counterView.text = "1"
                 itemName.text = item.title
                 itemPrice.text = getString(com.example.core.R.string.dollar_f, item.price)
                 Picasso.get()
