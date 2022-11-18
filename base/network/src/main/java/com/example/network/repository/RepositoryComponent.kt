@@ -1,6 +1,6 @@
 package com.example.network.repository
 
-import com.example.core.repo.AbstractRepositoryComponent
+import com.example.core.di.AbstractRepositoryComponent
 import com.example.network.NetworkModule
 import dagger.Component
 import javax.inject.Singleton

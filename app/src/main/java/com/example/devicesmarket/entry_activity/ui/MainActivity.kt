@@ -1,7 +1,6 @@
 package com.example.devicesmarket.entry_activity.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -42,10 +41,16 @@ class MainActivity : ActivityWithAppComponent() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val dagger = DaggerMarketActivityComponent.builder()
+        DaggerMarketActivityComponent.builder()
             .abstractAppComponent(appComponent)
-            .build()
-        dagger.inject(this)
+            .build().inject(this)
+        initRecyclers()
+        initBottomFilter()
+        initCartCounter()
+        initButtonsRecycler()
+    }
+
+    private fun initRecyclers() {
         val adapter = ProductsAdapter()
         binding.devicesRecycler.adapter = adapter
         val hsAdapter = HotSalesListAdapter()
@@ -54,47 +59,9 @@ class MainActivity : ActivityWithAppComponent() {
             adapter.submitList(it.bestSeller)
             hsAdapter.submitList(it.homeStore)
         }
-        wordsViewModel.basketCount.observe(this) {
-            binding.cartCounter.text = if (it == 0) "" else it.toString()
-        }
-        binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
-            Triple(R.string.phones_string, R.drawable.ic_phone) {
-                Log.d("AAAAAA", "BBBBBBBB")
-            },
-            Triple(R.string.computer_string, R.drawable.ic_pc) {
-                Toast.makeText(
-                    baseContext,
-                    "Computer",
-                    Toast.LENGTH_SHORT
-                ).show()
-            },
-            Triple(R.string.health_string, R.drawable.ic_heart) {
-                Toast.makeText(
-                    baseContext,
-                    "Health",
-                    Toast.LENGTH_SHORT
-                ).show()
-            },
-            Triple(R.string.books_string, R.drawable.ic_book) {
-                Toast.makeText(
-                    baseContext,
-                    "Book",
-                    Toast.LENGTH_SHORT
-                ).show()
-            },
-            Triple(R.string.another_string, R.drawable.ic_bucket) {
-                Toast.makeText(
-                    baseContext,
-                    "Another",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        ))
     }
 
-
-    override fun onResume() {
-        super.onResume()
+    private fun initBottomFilter() {
         val filter = binding.bottomLayout
         fun stateFilter(isShow: Boolean) {
             if (filter.isActivated != isShow) {
@@ -115,6 +82,32 @@ class MainActivity : ActivityWithAppComponent() {
         binding.toCartButton.setOnClickListener {
             navigation.toMyCartActivity(this)
         }
+    }
+
+    private fun initCartCounter() {
+        wordsViewModel.basketCount.observe(this) {
+            binding.cartCounter.text = if (it == 0) "" else it.toString()
+        }
+    }
+
+    private fun initButtonsRecycler() {
+        binding.topSheet.buttonsRecycler.adapter = CategoryButtonsAdapter(listOf(
+            Triple(R.string.phones_string, R.drawable.ic_phone) {
+                Toast.makeText(baseContext, getText(R.string.phones_string), Toast.LENGTH_SHORT).show()
+            },
+            Triple(R.string.computer_string, R.drawable.ic_pc) {
+                Toast.makeText(baseContext, getText(R.string.computer_string), Toast.LENGTH_SHORT).show()
+            },
+            Triple(R.string.health_string, R.drawable.ic_heart) {
+                Toast.makeText(baseContext, getText(R.string.health_string), Toast.LENGTH_SHORT).show()
+            },
+            Triple(R.string.books_string, R.drawable.ic_book) {
+                Toast.makeText(baseContext, getText(R.string.books_string), Toast.LENGTH_SHORT).show()
+            },
+            Triple(R.string.another_string, R.drawable.ic_bucket) {
+                Toast.makeText(baseContext, getText(R.string.another_string), Toast.LENGTH_SHORT).show()
+            }
+        ))
     }
 
     inner class ProductHolder(private val binding: DeviceCardBinding) :
@@ -168,7 +161,5 @@ class MainActivity : ActivityWithAppComponent() {
         override fun onBindViewHolder(holder: ProductHolder, position: Int) {
             holder.bind(getItem(position), itemCount)
         }
-
     }
-
 }

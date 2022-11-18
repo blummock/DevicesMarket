@@ -18,17 +18,23 @@
         android:theme="@style/Theme.DevicesMarket"
         tools:targetApi="31">
         <activity
-            android:name=".entry_activity.ui.MainActivity"
+            android:name="com.example.splash.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.DevicesMarket">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.mycart.ui.MyCartActivity" />
-        <activity android:name="com.example.splash.SplashActivity" />
-        <activity android:name="com.example.productdetails.ui.ProductDetailsActivity" />
+        <activity
+            android:name=".entry_activity.ui.MainActivity"
+            android:theme="@style/Theme.DevicesMarket" />
+        <activity
+            android:name="com.example.mycart.ui.MyCartActivity"
+            android:theme="@style/Theme.DevicesMarket" />
+        <activity
+            android:name="com.example.productdetails.ui.ProductDetailsActivity"
+            android:theme="@style/Theme.DevicesMarket" />
     </application>
 
 </manifest>

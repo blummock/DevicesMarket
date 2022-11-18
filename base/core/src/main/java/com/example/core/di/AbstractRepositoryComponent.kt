@@ -1,4 +1,8 @@
-package com.example.core.repo
+package com.example.core.di
+
+import com.example.core.repo.BasketRepository
+import com.example.core.repo.MarketRepository
+import com.example.core.repo.ProductRepository
 
 interface AbstractRepositoryComponent {
 
