@@ -14,6 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DevicesMarket"
 include ':app'
+include ':features:base_screen'
 include ':features:product_details'
 include ':features:my_cart'
 include ':base:core'
