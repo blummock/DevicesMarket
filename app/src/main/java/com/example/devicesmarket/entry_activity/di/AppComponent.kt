@@ -1,4 +1,4 @@
-package com.example.devicesmarket
+package com.example.devicesmarket.entry_activity.di
 
 import com.example.core.di.AbstractRepositoryComponent
 import com.example.core.repo.BasketRepository
@@ -6,9 +6,7 @@ import com.example.core.repo.MarketRepository
 import com.example.core.repo.ProductRepository
 import dagger.Component
 
-@Component(
-    dependencies = [AbstractRepositoryComponent::class],
-)
+@Component(dependencies = [AbstractRepositoryComponent::class])
 interface AppComponent {
 
     fun provideMarketRepository(): MarketRepository

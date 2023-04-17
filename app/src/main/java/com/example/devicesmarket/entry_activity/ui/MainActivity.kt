@@ -31,6 +31,6 @@ class MainActivity : AppCompatActivity(), AbstractActivity {
             .fragmentManager(supportFragmentManager)
             .appComponent((application as MyApp).appComponent)
             .build().apply { inject(this@MainActivity) }
-        navigation.toBaseFragment(null)
+        navigation.init()
     }
 }

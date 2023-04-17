@@ -1,15 +1,16 @@
 package com.example.core.navigation
 
-import android.app.Activity
 import android.os.Bundle
 
 interface Navigation {
 
+    fun back()
+
+    fun init()
+
     fun toBaseFragment(bundle: Bundle?)
 
-    fun toMainActivity(currentActivity: Activity)
+    fun toMyCartFragment(bundle: Bundle?)
 
-    fun toMyCartActivity(currentActivity: Activity)
-
-    fun toProductDetailsActivity(currentActivity: Activity, bundle: Bundle)
+    fun toProductDetailsFragment(bundle: Bundle?)
 }

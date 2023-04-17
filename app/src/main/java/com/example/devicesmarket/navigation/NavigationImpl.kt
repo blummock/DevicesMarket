@@ -7,9 +7,8 @@ import androidx.fragment.app.FragmentManager
 import com.example.base_screen.ui.BaseScreenFragment
 import com.example.core.navigation.Navigation
 import com.example.devicesmarket.R
-import com.example.devicesmarket.entry_activity.ui.MainActivity
-import com.example.mycart.ui.MyCartActivity
-import com.example.productdetails.ui.ProductDetailsActivity
+import com.example.mycart.ui.MyCartFragment
+import com.example.productdetails.ui.ProductDetailsFragment
 import javax.inject.Inject
 
 class NavigationImpl @Inject constructor(private val manager: FragmentManager) : Navigation {
@@ -22,18 +21,34 @@ class NavigationImpl @Inject constructor(private val manager: FragmentManager) :
         currentActivity.finish()
     }
 
-    override fun toBaseFragment(bundle: Bundle?) {
+    override fun back() {
+        manager.popBackStack()
+    }
+
+    override fun init() {
         manager.beginTransaction()
-            .replace(R.id.host, BaseScreenFragment::class.java, bundle)
+            .replace(R.id.host, BaseScreenFragment::class.java, null)
             .commit()
     }
 
-    override fun toMainActivity(currentActivity: Activity) =
-        toActivity(currentActivity, MainActivity::class.java)
+    override fun toBaseFragment(bundle: Bundle?) {
+        manager.beginTransaction()
+            .replace(R.id.host, BaseScreenFragment::class.java, bundle)
+            .addToBackStack(null)
+            .commit()
+    }
 
-    override fun toMyCartActivity(currentActivity: Activity) =
-        toActivity(currentActivity, MyCartActivity::class.java)
+    override fun toMyCartFragment(bundle: Bundle?) {
+        manager.beginTransaction()
+            .replace(R.id.host, MyCartFragment::class.java, bundle)
+            .addToBackStack(null)
+            .commit()
+    }
 
-    override fun toProductDetailsActivity(currentActivity: Activity, bundle: Bundle) =
-        toActivity(currentActivity, ProductDetailsActivity::class.java, bundle)
+    override fun toProductDetailsFragment(bundle: Bundle?) {
+        manager.beginTransaction()
+            .replace(R.id.host, ProductDetailsFragment::class.java, bundle)
+            .addToBackStack(null)
+            .commit()
+    }
 }

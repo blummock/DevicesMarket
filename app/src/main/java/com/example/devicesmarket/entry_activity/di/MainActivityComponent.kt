@@ -2,7 +2,6 @@ package com.example.devicesmarket.entry_activity.di
 
 import androidx.fragment.app.FragmentManager
 import com.example.core.di.AbstractActivityComponent
-import com.example.devicesmarket.AppComponent
 import com.example.devicesmarket.entry_activity.ui.MainActivity
 import com.example.devicesmarket.navigation.NavigationModule
 import dagger.BindsInstance

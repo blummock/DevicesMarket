@@ -1,39 +1,44 @@
 package com.example.productdetails.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
+import com.example.core.AbstractFragment
 import com.example.core.data.ProductEntity
 import com.example.core.di.ViewModelFactory
-import com.example.core.navigation.Constants.ARG_COUNT_ITEMS
-import com.example.core.navigation.Constants.CURRENT_ITEM
+import com.example.core.navigation.ARG_COUNT_ITEMS
+import com.example.core.navigation.CURRENT_ITEM
 import com.example.core.navigation.Navigation
-import com.example.productdetails.databinding.ActivityProductDetailsBinding
+import com.example.productdetails.databinding.ProductDetailsFragmentBinding
+import com.example.productdetails.di.DaggerProductDetailsComponent
 import com.google.android.material.tabs.TabLayoutMediator
+import javax.inject.Inject
 
-class ProductDetailsActivity : AppCompatActivity() {
+class ProductDetailsFragment : AbstractFragment<ProductDetailsFragmentBinding>(ProductDetailsFragmentBinding::inflate) {
 
-//    @Inject
+    @Inject
     lateinit var navigation: Navigation
 
-//    @Inject
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by viewModels<ProductDetailsViewModel> {
         viewModelFactory
     }
 
-    private lateinit var binding: ActivityProductDetailsBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProductDetailsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-//        DaggerProductActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
+        DaggerProductDetailsComponent.builder()
+            .abstractActivityComponent(component)
+            .build()
+            .inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         attachViewModel()
-        val countItems = intent.getIntExtra(ARG_COUNT_ITEMS, 1)
-        val currentItem = intent.getIntExtra(CURRENT_ITEM, 0)
+        val countItems = requireArguments().getInt(ARG_COUNT_ITEMS, 1)
+        val currentItem = requireArguments().getInt(CURRENT_ITEM, 0)
         viewModel.load(currentItem)
         initImagePager(countItems)
         initTabPager()
@@ -45,7 +50,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             com.example.core.R.string.details_string,
             com.example.core.R.string.features_string
         )
-        val adapter = TabPagerAdapter(items.size, viewModel, supportFragmentManager, lifecycle)
+        val adapter = TabPagerAdapter(items.size, viewModel, childFragmentManager, lifecycle)
         val pager = binding.deviceInfoLayout.pager
         pager.adapter = adapter
         TabLayoutMediator(binding.deviceInfoLayout.tabLayout, pager) { tab, position ->
@@ -54,7 +59,7 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun initImagePager(itemsCount: Int) {
-        val adapter = ImagePagerAdapter(itemsCount, viewModel, supportFragmentManager, lifecycle)
+        val adapter = ImagePagerAdapter(itemsCount, viewModel, childFragmentManager, lifecycle)
         binding.pager.also {
             it.adapter = adapter
             it.offscreenPageLimit = 2
@@ -62,7 +67,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                 page.translationX = position * -420f
                 page.scaleY = 1 - (0.25f * kotlin.math.abs(position))
             }
-            it.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            it.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     viewModel.load(position)
                 }
@@ -80,7 +85,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                     filter.animate().translationY((-height).toFloat()).start()
                 }.start()
         }
-        viewModel.productEntity.observe(this) {
+        viewModel.productEntity.observe(viewLifecycleOwner) {
             update(it)
             binding.apply {
                 deviceInfoLayout.addButton.text = getString(com.example.core.R.string.add_to_cart_string, it.price)
@@ -88,11 +93,7 @@ class ProductDetailsActivity : AppCompatActivity() {
             }
         }
         binding.closeButton.setOnClickListener {
-            navigation.toMainActivity(this)
+            navigation.back()
         }
-    }
-
-    override fun onBackPressed() {
-        navigation.toMainActivity(this)
     }
 }

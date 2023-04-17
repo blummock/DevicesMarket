@@ -26,10 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.mycart.ui.MyCartActivity"/>
-        <activity
-            android:name="com.example.productdetails.ui.ProductDetailsActivity"/>
     </application>
 
 </manifest>

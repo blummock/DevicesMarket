@@ -16,7 +16,8 @@ import com.example.core.AbstractFragment
 import com.example.core.R
 import com.example.core.data.BestSellerEntity
 import com.example.core.di.ViewModelFactory
-import com.example.core.navigation.Constants
+import com.example.core.navigation.ARG_COUNT_ITEMS
+import com.example.core.navigation.CURRENT_ITEM
 import com.example.core.navigation.Navigation
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
@@ -81,7 +82,7 @@ class BaseScreenFragment : AbstractFragment<FragmentBaseScreenBinding>(FragmentB
             stateFilter(false)
         }
         binding.toCartButton.setOnClickListener {
-//            navigation.toMyCartActivity(this)
+            navigation.toMyCartFragment(null)
         }
     }
 
@@ -128,9 +129,9 @@ class BaseScreenFragment : AbstractFragment<FragmentBaseScreenBinding>(FragmentB
             }
             binding.root.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putInt(Constants.ARG_COUNT_ITEMS, count)
-                bundle.putInt(Constants.CURRENT_ITEM, item.id)
-//                navigation.toProductDetailsActivity(this@MainActivity, bundle)
+                bundle.putInt(ARG_COUNT_ITEMS, count)
+                bundle.putInt(CURRENT_ITEM, item.id)
+                navigation.toProductDetailsFragment(bundle)
             }
         }
     }

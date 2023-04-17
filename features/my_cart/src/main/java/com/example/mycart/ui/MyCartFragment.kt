@@ -2,48 +2,53 @@ package com.example.mycart.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.core.AbstractFragment
 import com.example.core.data.BasketItemEntity
 import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
-import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
+import com.example.mycart.databinding.MyCartFragmentBinding
+import com.example.mycart.di.DaggerMyCartComponent
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
-class MyCartActivity : AppCompatActivity() {
+class MyCartFragment : AbstractFragment<MyCartFragmentBinding>(MyCartFragmentBinding::inflate) {
 
-//    @Inject
+    @Inject
     lateinit var navigation: Navigation
 
-//    @Inject
+    @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by viewModels<MyCartViewModel> {
         viewModelFactory
     }
 
-    private lateinit var binding: ActivityMyCartBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMyCartBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-//        DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
+        DaggerMyCartComponent.builder()
+            .abstractActivityComponent(component)
+            .build()
+            .inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycler()
         binding.closeButton.setOnClickListener {
-            navigation.toMainActivity(this)
+            navigation.back()
         }
     }
 
     private fun initRecycler() {
         val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
-        viewModel.basketList.observe(this) {
+        viewModel.basketList.observe(viewLifecycleOwner) {
             adapter.submitList(it.basket)
             binding.delivery.text = it.delivery
             binding.total.text = getString(com.example.core.R.string.dollar_us, it.total)
@@ -64,7 +69,7 @@ class MyCartActivity : AppCompatActivity() {
             }
         }
     }
-    
+
     inner class CartItemsAdapter : ListAdapter<BasketItemEntity, CartItemHolder>(object :
         DiffUtil.ItemCallback<BasketItemEntity>() {
 
