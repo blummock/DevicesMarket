@@ -4,25 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.data.BasketItemEntity
-import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Navigation
 import com.example.mycart.databinding.ActivityMyCartBinding
 import com.example.mycart.databinding.CartItemCardBinding
-import com.example.mycart.di.DaggerMyCartActivityComponent
 import com.squareup.picasso.Picasso
-import javax.inject.Inject
 
-class MyCartActivity : ActivityWithAppComponent() {
+class MyCartActivity : AppCompatActivity() {
 
-    @Inject
+//    @Inject
     lateinit var navigation: Navigation
 
-    @Inject
+//    @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by viewModels<MyCartViewModel> {
@@ -35,7 +33,7 @@ class MyCartActivity : ActivityWithAppComponent() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
+//        DaggerMyCartActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
         initRecycler()
         binding.closeButton.setOnClickListener {
             navigation.toMainActivity(this)
@@ -93,9 +91,4 @@ class MyCartActivity : ActivityWithAppComponent() {
             holder.bind(getItem(position))
         }
     }
-
-    override fun onBackPressed() {
-        navigation.toMainActivity(this)
-    }
-
 }

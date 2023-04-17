@@ -5,6 +5,8 @@ import android.os.Bundle
 
 interface Navigation {
 
+    fun toBaseFragment(bundle: Bundle?)
+
     fun toMainActivity(currentActivity: Activity)
 
     fun toMyCartActivity(currentActivity: Activity)

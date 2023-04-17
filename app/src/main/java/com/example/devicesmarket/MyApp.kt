@@ -1,22 +1,16 @@
 package com.example.devicesmarket
 
 import android.app.Application
-import com.example.core.di.AbstractApp
-import com.example.core.di.AbstractAppComponent
 import com.example.network.repository.DaggerRepositoryComponent
 
-class MyApp : Application(), AbstractApp {
+class MyApp : Application() {
 
-    private var appComponent: AbstractAppComponent? = null
+    lateinit var appComponent: AppComponent
+    private set
 
     override fun onCreate() {
         super.onCreate()
         appComponent =
             DaggerAppComponent.builder().abstractRepositoryComponent(DaggerRepositoryComponent.create()).build()
     }
-
-    override fun getAppComponent(): AbstractAppComponent {
-        return appComponent!!
-    }
-
 }

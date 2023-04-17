@@ -2,24 +2,22 @@ package com.example.productdetails.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.core.data.ProductEntity
-import com.example.core.di.ActivityWithAppComponent
 import com.example.core.di.ViewModelFactory
 import com.example.core.navigation.Constants.ARG_COUNT_ITEMS
 import com.example.core.navigation.Constants.CURRENT_ITEM
 import com.example.core.navigation.Navigation
 import com.example.productdetails.databinding.ActivityProductDetailsBinding
-import com.example.productdetails.di.DaggerProductActivityComponent
 import com.google.android.material.tabs.TabLayoutMediator
-import javax.inject.Inject
 
-class ProductDetailsActivity : ActivityWithAppComponent() {
+class ProductDetailsActivity : AppCompatActivity() {
 
-    @Inject
+//    @Inject
     lateinit var navigation: Navigation
 
-    @Inject
+//    @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by viewModels<ProductDetailsViewModel> {
@@ -32,7 +30,7 @@ class ProductDetailsActivity : ActivityWithAppComponent() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        DaggerProductActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
+//        DaggerProductActivityComponent.builder().abstractAppComponent(appComponent).build().inject(this)
         attachViewModel()
         val countItems = intent.getIntExtra(ARG_COUNT_ITEMS, 1)
         val currentItem = intent.getIntExtra(CURRENT_ITEM, 0)

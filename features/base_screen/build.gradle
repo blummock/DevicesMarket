@@ -35,6 +35,7 @@ dependencies {
     implementation mlibs.material
     implementation mlibs.viewModel
     implementation mlibs.navigation
+    implementation mlibs.navigationFragment
     implementation mlibs.liveData
     implementation mlibs.dagger
     implementation mlibs.picasso

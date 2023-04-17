@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation project(":features:base_screen")
     implementation project(":features:product_details")
     implementation project(":features:my_cart")
     implementation project(":base:core")

@@ -1,15 +1,19 @@
 package com.example.devicesmarket
 
-import com.example.core.di.AbstractAppComponent
 import com.example.core.di.AbstractRepositoryComponent
-import com.example.devicesmarket.navigation.NavigationModule
+import com.example.core.repo.BasketRepository
+import com.example.core.repo.MarketRepository
+import com.example.core.repo.ProductRepository
 import dagger.Component
-import javax.inject.Singleton
 
 @Component(
     dependencies = [AbstractRepositoryComponent::class],
-    modules = [NavigationModule::class]
 )
-@Singleton
-interface AppComponent : AbstractAppComponent {
+interface AppComponent {
+
+    fun provideMarketRepository(): MarketRepository
+
+    fun provideProductRepository(): ProductRepository
+
+    fun provideBasketRepository(): BasketRepository
 }

@@ -5,7 +5,7 @@ import com.example.core.repo.BasketRepository
 import com.example.core.repo.MarketRepository
 import com.example.core.repo.ProductRepository
 
-interface AbstractAppComponent {
+interface AbstractActivityComponent {
 
     fun provideNavigation(): Navigation
 

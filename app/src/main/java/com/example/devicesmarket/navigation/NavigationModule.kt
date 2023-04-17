@@ -1,13 +1,13 @@
 package com.example.devicesmarket.navigation
 
+import androidx.fragment.app.FragmentManager
 import com.example.core.navigation.Navigation
-import com.example.devicesmarket.navigation.NavigationImpl
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-interface NavigationModule {
+object NavigationModule {
 
-    @Binds
-    fun bindNavigation(navigationImpl: NavigationImpl): Navigation
+    @Provides
+    fun bindNavigation(fragmentManager: FragmentManager): Navigation = NavigationImpl(fragmentManager)
 }
