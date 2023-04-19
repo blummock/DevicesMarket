@@ -5,6 +5,7 @@ import com.example.core.repo.Cache
 import com.example.core.repo.ProductRepository
 import com.example.core.repo.ResponseHandler
 import com.example.network.NetApi
+import com.example.network.adapters.toEntity
 import javax.inject.Inject
 
 class ProductRepositoryImpl @Inject constructor(
@@ -16,7 +17,7 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun getProduct(): ProductEntity? {
         return responseHandler.handle {
             cache.getOrUpdate {
-                netApi.getProduct()
+                netApi.getProduct().toEntity()
             }
         }
     }

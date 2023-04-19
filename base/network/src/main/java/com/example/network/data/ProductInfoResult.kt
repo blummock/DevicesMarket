@@ -1,7 +1,10 @@
-package com.example.core.data
+package com.example.network.data
 
-data class ProductEntity(
+import com.google.gson.annotations.SerializedName
+
+data class ProductInfoResult(
     val id: String,
+    @SerializedName("CPU")
     val cpu: String,
     val camera: String,
     val capacity: List<String>,

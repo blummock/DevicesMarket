@@ -1,7 +1,7 @@
 package com.example.core.repo
 
-import com.example.core.data.MarketList
+import com.example.core.data.MarketEntityList
 
 interface MarketRepository {
-    suspend fun getMarketList(): MarketList?
+    suspend fun getMarketList(): MarketEntityList?
 }

@@ -1,7 +1,7 @@
 package com.example.network.repository
 
-import com.example.core.data.BasketList
-import com.example.core.data.MarketList
+import com.example.core.data.BasketEntityList
+import com.example.core.data.MarketEntityList
 import com.example.core.data.ProductEntity
 import com.example.core.repo.*
 import com.example.network.InMemoryCache
@@ -24,7 +24,7 @@ interface RepositoryModule {
 
         @Provides
         @Singleton
-        fun provideCacheBasket(): Cache<BasketList> = InMemoryCache()
+        fun provideCacheBasket(): Cache<BasketEntityList> = InMemoryCache()
 
         @Provides
         @Singleton
@@ -32,7 +32,7 @@ interface RepositoryModule {
 
         @Provides
         @Singleton
-        fun provideCacheMarket(): Cache<MarketList> = InMemoryCache()
+        fun provideCacheMarket(): Cache<MarketEntityList> = InMemoryCache()
 
         @Provides
         @Singleton

@@ -1,7 +1,5 @@
 package com.example.devicesmarket.navigation
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.example.base_screen.ui.BaseScreenFragment
@@ -12,14 +10,6 @@ import com.example.productdetails.ui.ProductDetailsFragment
 import javax.inject.Inject
 
 class NavigationImpl @Inject constructor(private val manager: FragmentManager) : Navigation {
-
-
-    private fun toActivity(currentActivity: Activity, cls: Class<*>, bundle: Bundle = Bundle()) {
-        val myIntent = Intent(currentActivity, cls)
-        myIntent.putExtras(bundle)
-        currentActivity.startActivity(myIntent)
-        currentActivity.finish()
-    }
 
     override fun back() {
         manager.popBackStack()

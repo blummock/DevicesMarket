@@ -26,6 +26,8 @@ class MyCartFragment : AbstractFragment<MyCartFragmentBinding>(MyCartFragmentBin
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    private lateinit var adapter: CartItemsAdapter
+
     private val viewModel by viewModels<MyCartViewModel> {
         viewModelFactory
     }
@@ -36,6 +38,7 @@ class MyCartFragment : AbstractFragment<MyCartFragmentBinding>(MyCartFragmentBin
             .abstractActivityComponent(component)
             .build()
             .inject(this)
+        adapter = CartItemsAdapter()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +49,6 @@ class MyCartFragment : AbstractFragment<MyCartFragmentBinding>(MyCartFragmentBin
     }
 
     private fun initRecycler() {
-        val adapter = CartItemsAdapter()
         binding.itemsRecycler.adapter = adapter
         viewModel.basketList.observe(viewLifecycleOwner) {
             adapter.submitList(it.basket)

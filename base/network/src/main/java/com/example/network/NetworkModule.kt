@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 object NetworkModule {
@@ -17,6 +18,7 @@ object NetworkModule {
 
 
     @Provides
+    @Singleton
     fun provideOkHttp() = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
         .writeTimeout(60, TimeUnit.SECONDS)
@@ -26,10 +28,12 @@ object NetworkModule {
 
 
     @Provides
+    @Singleton
     fun provideGson() = GsonBuilder().create()
 
 
     @Provides
+    @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson) = Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(GsonConverterFactory.create(gson))

@@ -1,15 +1,15 @@
-package com.example.core.data
+package com.example.network.data
 
 import com.google.gson.annotations.SerializedName
 
-data class MarketList(
+data class MarketDataResult(
     @SerializedName("home_store")
-    val homeStore: List<HomeStoreEntity>,
+    val homeStore: List<HomeStoreData>,
     @SerializedName("best_seller")
-    val bestSeller: List<BestSellerEntity>
+    val bestSeller: List<BestSellerData>
 )
 
-data class HomeStoreEntity(
+data class HomeStoreData(
     val id: Int,
     @SerializedName("is_new")
     val isNew: Boolean?,
@@ -20,7 +20,7 @@ data class HomeStoreEntity(
     val isBy: Boolean
 )
 
-data class BestSellerEntity(
+data class BestSellerData(
     val id: Int,
     @SerializedName("is_favorites")
     val isFavorites: Boolean,

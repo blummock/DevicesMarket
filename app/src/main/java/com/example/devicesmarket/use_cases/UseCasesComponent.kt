@@ -1,14 +1,17 @@
-package com.example.devicesmarket.entry_activity.di
+package com.example.devicesmarket.use_cases
 
 import com.example.core.data.BasketEntityList
 import com.example.core.data.MarketEntityList
 import com.example.core.data.ProductEntity
+import com.example.core.di.AbstractRepositoryComponent
 import com.example.core.use_cases.UseCases
-import com.example.devicesmarket.use_cases.UseCasesComponent
 import dagger.Component
 
-@Component(dependencies = [UseCasesComponent::class])
-interface AppComponent {
+@Component(
+    modules = [UsesCasesModule::class],
+    dependencies = [AbstractRepositoryComponent::class]
+)
+interface UseCasesComponent {
 
     fun provideBasketUseCases(): UseCases<BasketEntityList>
 

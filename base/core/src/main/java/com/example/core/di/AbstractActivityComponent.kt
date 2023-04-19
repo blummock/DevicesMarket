@@ -1,17 +1,18 @@
 package com.example.core.di
 
+import com.example.core.data.BasketEntityList
+import com.example.core.data.MarketEntityList
+import com.example.core.data.ProductEntity
 import com.example.core.navigation.Navigation
-import com.example.core.repo.BasketRepository
-import com.example.core.repo.MarketRepository
-import com.example.core.repo.ProductRepository
+import com.example.core.use_cases.UseCases
 
 interface AbstractActivityComponent {
 
     fun provideNavigation(): Navigation
 
-    fun provideMarketRepository(): MarketRepository
+    fun provideBasketUseCases(): UseCases<BasketEntityList>
 
-    fun provideProductRepository(): ProductRepository
+    fun provideMarketUseCases(): UseCases<MarketEntityList>
 
-    fun provideBasketRepository(): BasketRepository
+    fun provideProductUseCases(): UseCases<ProductEntity>
 }

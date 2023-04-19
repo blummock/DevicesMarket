@@ -1,13 +1,13 @@
-package com.example.core.data
+package com.example.network.data
 
-data class BasketList(
-    val basket: List<BasketItemEntity>,
+data class BasketDataResult(
+    val basket: List<BasketItemData>,
     val id: Int,
     val delivery: String,
     val total: Int
 )
 
-data class BasketItemEntity(
+data class BasketItemData(
     val id: Int,
     val images: String,
     val price: Float,

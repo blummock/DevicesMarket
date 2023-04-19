@@ -1,7 +1,7 @@
 package com.example.core.repo
 
-import com.example.core.data.BasketList
+import com.example.core.data.BasketEntityList
 
 interface BasketRepository {
-    suspend fun getBasketList(): BasketList?
+    suspend fun getBasketList(): BasketEntityList?
 }
