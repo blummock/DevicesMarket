@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_height="150dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cpu_title"
+        style="@style/ButtonItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:drawableTop="@drawable/ic_cpu"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toStartOf="@id/camera_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/camera_title"
+        style="@style/ButtonItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:drawableTop="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toStartOf="@id/ram_title"
+        app:layout_constraintStart_toEndOf="@+id/cpu_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ram_title"
+        style="@style/ButtonItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:drawableTop="@drawable/ic_memory"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toStartOf="@id/store_title"
+        app:layout_constraintStart_toEndOf="@id/camera_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/store_title"
+        style="@style/ButtonItemStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:drawableTop="@drawable/ic_store"
+        app:layout_constraintBottom_toBottomOf="@id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ram_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Item" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/info_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/select_color_and_capacity_string"
+        android:textSize="7pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/middle_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.62" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/color_first_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/accept_background"
+        android:foreground="@drawable/accept_background"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/color_second_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middle_guideline"
+        tools:backgroundTint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/color_second_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/accept_background"
+        android:foreground="@drawable/accept_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/vertical_guideline"
+        app:layout_constraintStart_toEndOf="@id/color_first_button"
+        app:layout_constraintTop_toBottomOf="@+id/middle_guideline"
+        tools:backgroundTint="#67270A" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.37" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/first_store_button"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/orange"
+        android:padding="0dp"
+        android:textSize="7pt"
+        app:cornerRadius="10dp"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/second_store_button"
+        app:layout_constraintStart_toStartOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/middle_guideline"
+        tools:text="256 Gb" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/second_store_button"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        android:padding="0dp"
+        android:textColor="@color/gray"
+        android:textSize="7pt"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/first_store_button"
+        app:layout_constraintTop_toBottomOf="@+id/middle_guideline"
+        tools:text="128 Gb" />
+</androidx.constraintlayout.widget.ConstraintLayout>
